@@ -1,5 +1,6 @@
 import { OnboardingData } from "../../app";
 import { StyleSheet, Text, View } from "react-native";
+import { RouteColors } from "../../constants/theme";
 
 interface Props {
   data: OnboardingData;
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   },
   flag: { fontSize: 40, marginBottom: 18 },
   kicker: {
-    color: "#E10600",
+    color: RouteColors.signal,
     fontFamily: "JetBrains Mono",
     fontSize: 17,
     fontWeight: "700",
@@ -87,14 +88,14 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   name: {
-    color: "#fff",
+    color: RouteColors.text,
     fontFamily: "Barlow Condensed",
     fontSize: 42,
     fontWeight: "900",
     marginTop: 16,
     textAlign: "center",
   },
-  subtitle: { color: "#666", fontFamily: "Barlow", fontSize: 16, marginTop: 12, textAlign: "center" },
+  subtitle: { color: RouteColors.muted, fontFamily: "Barlow", fontSize: 16, marginTop: 12, textAlign: "center" },
   metrics: { width: "100%" as any, flexDirection: "row", gap: 12, marginTop: 58 },
   metric: {
     flex: 1,
@@ -105,20 +106,20 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#2a2a2a",
-    backgroundColor: "#161616",
+    borderColor: RouteColors.line,
+    backgroundColor: RouteColors.panel,
   },
   metricActive: { borderColor: "rgba(225,6,0,0.65)" },
   metricPosition: {
-    color: "#777",
+    color: RouteColors.muted,
     fontFamily: "Barlow Condensed",
     fontSize: 16,
     fontWeight: "700",
   },
-  metricValue: { color: "#888", fontFamily: "Barlow Condensed", fontSize: 26, fontWeight: "800", marginTop: 10 },
-  activeText: { color: "#E10600" },
+  metricValue: { color: RouteColors.muted, fontFamily: "Barlow Condensed", fontSize: 26, fontWeight: "800", marginTop: 10 },
+  activeText: { color: RouteColors.signal },
   metricTitle: {
-    color: "#555",
+    color: RouteColors.muted,
     fontFamily: "JetBrains Mono",
     fontSize: 13,
     letterSpacing: 2,
@@ -133,18 +134,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     marginTop: 30,
     borderWidth: 1,
-    borderColor: "rgba(46,204,113,0.45)",
+    borderColor: "rgba(85,201,138,0.5)",
     borderRadius: 8,
-    backgroundColor: "rgba(46,204,113,0.05)",
+    backgroundColor: "rgba(85,201,138,0.08)",
   },
   sectionLabel: {
-    color: "#666",
+    color: RouteColors.muted,
     fontFamily: "JetBrains Mono",
     fontSize: 13,
     letterSpacing: 3,
     textTransform: "uppercase",
   },
-  surplusValue: { color: "#2ecc71", fontFamily: "Barlow Condensed", fontSize: 28, fontWeight: "800" },
+  surplusValue: { color: RouteColors.green, fontFamily: "Barlow Condensed", fontSize: 28, fontWeight: "800" },
   classLabel: { alignSelf: "flex-start", marginTop: 34, marginBottom: 14 },
   classBadge: {
     alignSelf: "flex-start",
@@ -154,13 +155,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     paddingVertical: 10,
     borderWidth: 1,
-    borderColor: "#70458a",
+    borderColor: "rgba(243,181,98,0.55)",
     borderRadius: 8,
   },
   classIcon: { fontSize: 22 },
-  classText: { color: "#a86cc5", fontFamily: "Barlow Condensed", fontSize: 18, fontWeight: "700" },
+  classText: { color: RouteColors.amber, fontFamily: "Barlow Condensed", fontSize: 18, fontWeight: "700" },
   footer: {
-    color: "#333",
+    color: RouteColors.muted,
     fontFamily: "JetBrains Mono",
     fontSize: 13,
     letterSpacing: 2,

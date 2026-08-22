@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { RouteColors } from "../constants/theme";
 
 interface Props {
   step: number;
@@ -80,13 +81,12 @@ function TrackStrip({ current, total }: { current: number; total: number }) {
   );
 }
 
-const RED = "#E10600";
-const SURFACE = "#161616";
+const SIGNAL = RouteColors.signal;
 
 const styles = StyleSheet.create({
   shell: {
     flex: 1,
-    backgroundColor: "#0b0b0b",
+    backgroundColor: RouteColors.ink,
   },
   header: {
     flexDirection: "row",
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingBottom: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "rgba(225,6,0,0.12)",
+    borderBottomColor: "rgba(216,102,74,0.2)",
   },
   logoRow: {
     flexDirection: "row",
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   logoMark: {
     width: 32,
     height: 32,
-    backgroundColor: RED,
+    backgroundColor: SIGNAL,
     borderRadius: 4,
     alignItems: "center",
     justifyContent: "center",
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     fontFamily: "Barlow Condensed",
     fontWeight: "900",
     fontSize: 20,
-    color: "#fff",
+    color: RouteColors.text,
     letterSpacing: -1,
     transform: [{ skewX: "8deg" }],
   },
@@ -128,11 +128,11 @@ const styles = StyleSheet.create({
     fontFamily: "Barlow Condensed",
     fontWeight: "900",
     fontSize: 26,
-    color: "#ffffff",
+    color: RouteColors.text,
     letterSpacing: 2,
   },
   logoOne: {
-    backgroundColor: RED,
+    backgroundColor: SIGNAL,
     paddingHorizontal: 5,
     paddingVertical: 1,
     borderRadius: 3,
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     fontFamily: "Barlow Condensed",
     fontWeight: "900",
     fontSize: 16,
-    color: "#fff",
+    color: RouteColors.text,
     transform: [{ skewX: "6deg" }],
   },
   lapRow: {
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     fontFamily: "Barlow Condensed",
     fontWeight: "700",
     fontSize: 18,
-    color: RED,
+    color: SIGNAL,
     letterSpacing: 1,
   },
   trackWrap: {
@@ -175,14 +175,14 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 2,
-    backgroundColor: "#2a2a2a",
+    backgroundColor: RouteColors.line,
     top: 13,
   },
   trackFill: {
     position: "absolute",
     left: 0,
     height: 2,
-    backgroundColor: RED,
+    backgroundColor: SIGNAL,
     top: 13,
   },
   node: {
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 14,
-    backgroundColor: "#1e1e1e",
+    backgroundColor: RouteColors.panel,
     borderWidth: 2,
     borderColor: "#333",
     alignItems: "center",
@@ -198,14 +198,14 @@ const styles = StyleSheet.create({
     marginLeft: -14,
   },
   nodeDone: {
-    backgroundColor: RED,
-    borderColor: RED,
+    backgroundColor: SIGNAL,
+    borderColor: SIGNAL,
   },
   nodeActive: {
-    backgroundColor: "#0b0b0b",
-    borderColor: RED,
+    backgroundColor: RouteColors.ink,
+    borderColor: SIGNAL,
     // web only
-    ...(({ boxShadow: `0 0 12px ${RED}` }) as any),
+    ...(({ boxShadow: `0 0 12px ${SIGNAL}` }) as any),
   },
   nodeText: {
     fontFamily: "Barlow Condensed",
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     color: "#555",
   },
   nodeTextActive: {
-    color: "#fff",
+    color: RouteColors.text,
   },
   content: {
     flex: 1,

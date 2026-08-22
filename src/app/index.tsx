@@ -4,8 +4,9 @@ import Step1Identity from "../features/onboarding/Step1Identity";
 import Step2Archetype from "../features/onboarding/Step2Archetype";
 import Step3Income from "../features/onboarding/Step3Income";
 import Step4Targets from "../features/onboarding/Step4Targets";
-import Dashboard from "../features/onboarding/dashboard";
+import DashboardScreen from "../screens/DashboardScreen";
 import AppShell from "../components/AppShell";
+import { RouteColors } from "../constants/theme";
 
 export type OnboardingData = {
   name: string;
@@ -45,7 +46,7 @@ export default function Index() {
           {step === 2 && <Step2Archetype data={data} update={update} onNext={next} onBack={back} />}
           {step === 3 && <Step3Income data={data} update={update} onNext={next} onBack={back} />}
           {step === 4 && <Step4Targets data={data} update={update} onComplete={next} onBack={back} />}
-          {step > TOTAL_STEPS && <Dashboard data={data} />}
+          {step > TOTAL_STEPS && <DashboardScreen data={data} />}
         </AppShell>
 
         {/* Home indicator */}
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     minHeight: "100vh" as any,
     width: "100%" as any,
-    backgroundColor: "#050505",
+    backgroundColor: RouteColors.inkDeep,
     alignItems: "center",
     justifyContent: "center",
     padding: 24,
@@ -73,24 +74,24 @@ const styles = StyleSheet.create({
     maxWidth: 390,
     height: 844,
     maxHeight: "calc(100vh - 48px)" as any,
-    backgroundColor: "#0b0b0b",
+    backgroundColor: RouteColors.ink,
     borderRadius: 44,
     overflow: "hidden",
     borderWidth: 1,
-    borderColor: "rgba(225,6,0,0.15)",
+    borderColor: "rgba(216,102,74,0.3)",
     ...Platform.select({
       web: {
-        boxShadow: "0 40px 120px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.04), 0 0 60px rgba(225,6,0,0.06)",
+        boxShadow: "0 40px 120px rgba(0,0,0,0.55), 0 0 0 1px rgba(240,231,213,0.04), 0 0 42px rgba(216,102,74,0.08)",
       } as any,
     }),
   },
   statusBar: {
     height: 50,
-    backgroundColor: "#0b0b0b",
+    backgroundColor: RouteColors.ink,
   },
   homeBar: {
     height: 34,
-    backgroundColor: "#0b0b0b",
+    backgroundColor: RouteColors.ink,
     alignItems: "center",
     justifyContent: "center",
   },

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TouchableOpacity, Text, View, StyleSheet, Platform } from "react-native";
+import { RouteColors } from "../constants/theme";
 
 interface Props {
   label: string;
@@ -44,8 +45,6 @@ export default function RNButton({ label, onPress, variant = "primary", flex, di
   );
 }
 
-const RED = "#E10600";
-
 const styles = StyleSheet.create({
   btn: {
     height: 52,
@@ -60,12 +59,12 @@ const styles = StyleSheet.create({
     }),
   },
   btnPrimary: {
-    backgroundColor: RED,
+    backgroundColor: RouteColors.signal,
   },
   btnGhost: {
-    backgroundColor: "#161616",
+    backgroundColor: RouteColors.panel,
     borderWidth: 1,
-    borderColor: "#2a2a2a",
+    borderColor: RouteColors.line,
   },
   btnFlex: {
     flex: 1,
@@ -83,7 +82,7 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     width: 4,
-    backgroundColor: "rgba(0,0,0,0.3)",
+    backgroundColor: "rgba(5,11,20,0.28)",
   },
   label: {
     fontFamily: "Barlow Condensed",
@@ -93,10 +92,10 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   labelPrimary: {
-    color: "#fff",
+    color: RouteColors.text,
   },
   labelGhost: {
-    color: "#888",
+    color: RouteColors.muted,
   },
   labelDisabled: {
     color: "#555",

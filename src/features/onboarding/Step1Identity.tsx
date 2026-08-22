@@ -3,6 +3,7 @@ import { OnboardingData } from "../../app";
 import RNButton from "../../components/RNButton";
 import RNCard from "../../components/RNCard";
 import RNField from "../../components/RNField";
+import { RouteColors } from "../../constants/theme";
 
 interface Props {
   data: OnboardingData;
@@ -54,11 +55,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 14,
     borderLeftWidth: 3,
-    borderLeftColor: "#E10600",
-    backgroundColor: "rgba(225,6,0,0.08)",
+    borderLeftColor: RouteColors.cyan,
+    backgroundColor: "rgba(113,155,145,0.1)",
   },
   diamond: {
-    color: "#E10600",
+    color: RouteColors.cyan,
     fontSize: 14,
     lineHeight: 20,
   },
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   driverName: {
-    color: "#E10600",
+    color: RouteColors.cyan,
     fontStyle: "normal",
     fontWeight: "600",
   },

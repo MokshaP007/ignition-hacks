@@ -3,6 +3,7 @@ import { OnboardingData } from "../../app";
 import RNButton from "../../components/RNButton";
 import RNCard from "../../components/RNCard";
 import RNField from "../../components/RNField";
+import { RouteColors } from "../../constants/theme";
 
 interface Props {
   data: OnboardingData;
@@ -62,9 +63,9 @@ export default function Step4Targets({ data, update, onComplete, onBack }: Props
             />
           </View>
           <View style={styles.legend}>
-            <BreakdownItem label="Spending" value={formatMoney(spending)} color="#E10600" />
-            <BreakdownItem label="Savings" value={formatMoney(savings)} color="#9b59b6" />
-            <BreakdownItem label="Surplus" value={`+${formatMoney(surplus)}`} color="#2ecc71" />
+            <BreakdownItem label="Spending" value={formatMoney(spending)} color={RouteColors.signal} />
+            <BreakdownItem label="Savings" value={formatMoney(savings)} color={RouteColors.cyan} />
+            <BreakdownItem label="Surplus" value={`+${formatMoney(surplus)}`} color={RouteColors.green} />
           </View>
         </View>
       )}
@@ -87,24 +88,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     paddingVertical: 16,
     borderWidth: 1,
-    borderColor: "#2a2a2a",
+    borderColor: RouteColors.line,
     borderRadius: 8,
-    backgroundColor: "#161616",
+    backgroundColor: RouteColors.panel,
     gap: 14,
   },
   breakdownTitle: {
-    color: "#666",
+    color: RouteColors.muted,
     fontFamily: "JetBrains Mono",
     fontSize: 12,
     letterSpacing: 3,
     textTransform: "uppercase",
   },
-  bar: { height: 8, flexDirection: "row", overflow: "hidden", borderRadius: 4, backgroundColor: "#252525" },
-  spendingBar: { height: "100%" as any, backgroundColor: "#E10600" },
-  savingsBar: { height: "100%" as any, backgroundColor: "#9b59b6" },
+  bar: { height: 8, flexDirection: "row", overflow: "hidden", borderRadius: 4, backgroundColor: RouteColors.line },
+  spendingBar: { height: "100%" as any, backgroundColor: RouteColors.signal },
+  savingsBar: { height: "100%" as any, backgroundColor: RouteColors.cyan },
   legend: { flexDirection: "row", justifyContent: "space-between" },
   breakdownItem: { alignItems: "center", gap: 5, minWidth: 72 },
   dot: { width: 7, height: 7, borderRadius: 4 },
-  breakdownLabel: { color: "#666", fontFamily: "JetBrains Mono", fontSize: 11, letterSpacing: 1 },
+  breakdownLabel: { color: RouteColors.muted, fontFamily: "JetBrains Mono", fontSize: 11, letterSpacing: 1 },
   breakdownValue: { fontFamily: "Barlow Condensed", fontSize: 17, fontWeight: "700" },
 });

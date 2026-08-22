@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { View, Text, TextInput, StyleSheet, Platform } from "react-native";
+import { RouteColors } from "../constants/theme";
 
 interface Props {
   label: string;
@@ -55,8 +56,6 @@ export default function RNField({
   );
 }
 
-const RED = "#E10600";
-
 const styles = StyleSheet.create({
   group: {
     gap: 6,
@@ -65,45 +64,45 @@ const styles = StyleSheet.create({
     fontFamily: "Barlow Condensed",
     fontWeight: "600",
     fontSize: 13,
-    color: "#aaa",
+    color: RouteColors.muted,
     letterSpacing: 1,
     textTransform: "uppercase",
   },
   inputRow: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#161616",
+    backgroundColor: RouteColors.panel,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#2a2a2a",
+    borderColor: RouteColors.line,
     overflow: "hidden",
     ...Platform.select({
       web: { transition: "border-color 0.15s" } as any,
     }),
   },
   inputRowFocused: {
-    borderColor: RED,
+    borderColor: RouteColors.signal,
     ...Platform.select({
-      web: { boxShadow: `0 0 0 2px rgba(225,6,0,0.15)` } as any,
+      web: { boxShadow: "0 0 0 2px rgba(113,155,145,0.18)" } as any,
     }),
   },
   prefixBox: {
     paddingHorizontal: 14,
     paddingVertical: 14,
     borderRightWidth: 1,
-    borderRightColor: "#2a2a2a",
+    borderRightColor: RouteColors.line,
   },
   prefixText: {
     fontFamily: "JetBrains Mono",
     fontSize: 15,
-    color: "#666",
+    color: RouteColors.muted,
   },
   input: {
     flex: 1,
     fontFamily: "Barlow",
     fontSize: 16,
     fontWeight: "500",
-    color: "#ffffff",
+    color: RouteColors.text,
     paddingHorizontal: 14,
     paddingVertical: 14,
     outlineStyle: "none",
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
   hint: {
     fontFamily: "Barlow",
     fontSize: 12,
-    color: "#555",
+    color: RouteColors.muted,
     lineHeight: 16,
   },
 });

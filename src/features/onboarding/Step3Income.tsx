@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import RNButton from "../../components/RNButton";
 import RNCard from "../../components/RNCard";
 import RNField from "../../components/RNField";
+import { RouteColors } from "../../constants/theme";
 
 interface Props {
   data: OnboardingData;
@@ -65,7 +66,7 @@ export default function Step3Income({ data, update, onNext, onBack }: Props) {
 
 const styles = StyleSheet.create({
   hint: {
-    color: "#555",
+    color: RouteColors.muted,
     fontFamily: "Barlow",
     fontSize: 12,
     lineHeight: 16,
@@ -73,9 +74,9 @@ const styles = StyleSheet.create({
   },
   summary: {
     borderWidth: 1,
-    borderColor: "rgba(225,6,0,0.5)",
+    borderColor: "rgba(216,102,74,0.55)",
     borderRadius: 8,
-    backgroundColor: "#161616",
+    backgroundColor: RouteColors.panel,
     paddingHorizontal: 20,
     paddingVertical: 16,
     gap: 14,
@@ -86,24 +87,24 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   summaryLabel: {
-    color: "#666",
+    color: RouteColors.muted,
     fontFamily: "JetBrains Mono",
     fontSize: 12,
     letterSpacing: 3,
     textTransform: "uppercase",
   },
   monthlyValue: {
-    color: "#E10600",
+    color: RouteColors.signal,
     fontFamily: "Barlow Condensed",
     fontSize: 25,
     fontWeight: "800",
   },
-  divider: { height: 1, backgroundColor: "#292929" },
+  divider: { height: 1, backgroundColor: RouteColors.line },
   detailRow: { flexDirection: "row", alignItems: "stretch" },
   detail: { flex: 1, gap: 6 },
-  verticalDivider: { width: 1, backgroundColor: "#292929", marginHorizontal: 20 },
+  verticalDivider: { width: 1, backgroundColor: RouteColors.line, marginHorizontal: 20 },
   detailValue: {
-    color: "#ddd",
+    color: RouteColors.text,
     fontFamily: "Barlow Condensed",
     fontSize: 18,
     fontWeight: "700",

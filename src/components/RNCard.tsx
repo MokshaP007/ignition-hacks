@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { View, Text, ScrollView, StyleSheet, Platform } from "react-native";
+import { RouteColors } from "../constants/theme";
 
 interface Props {
   badge?: string;
@@ -42,8 +43,6 @@ export default function RNCard({ badge, headline, subtext, children, actions }: 
   );
 }
 
-const RED = "#E10600";
-
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
@@ -63,9 +62,9 @@ const styles = StyleSheet.create({
   },
   badge: {
     alignSelf: "flex-start",
-    backgroundColor: "rgba(225,6,0,0.1)",
+    backgroundColor: RouteColors.signalSoft,
     borderWidth: 1,
-    borderColor: "rgba(225,6,0,0.3)",
+    borderColor: "rgba(216,102,74,0.45)",
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 4,
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   badgeText: {
     fontFamily: "JetBrains Mono",
     fontSize: 9,
-    color: RED,
+    color: RouteColors.signal,
     letterSpacing: 2,
     textTransform: "uppercase",
   },
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
     fontFamily: "Barlow Condensed",
     fontWeight: "800",
     fontSize: 30,
-    color: "#ffffff",
+    color: RouteColors.text,
     letterSpacing: -0.5,
     lineHeight: 34,
   },
@@ -90,12 +89,12 @@ const styles = StyleSheet.create({
     fontFamily: "Barlow",
     fontWeight: "400",
     fontSize: 14,
-    color: "#888",
+    color: RouteColors.muted,
     lineHeight: 20,
   },
   rule: {
     height: 2,
-    backgroundColor: RED,
+    backgroundColor: RouteColors.signal,
     width: 32,
     borderRadius: 1,
     marginBottom: 24,

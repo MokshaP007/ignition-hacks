@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { OnboardingData } from "../../app";
 import RNButton from "../../components/RNButton";
 import RNCard from "../../components/RNCard";
+import { RouteColors } from "../../constants/theme";
 
 interface Props {
   data: OnboardingData;
@@ -17,8 +18,6 @@ const FUNDING_OPTIONS = [
   { title: "Student on Scholarship", description: "Academic / merit-based", icon: "🏆" },
   { title: "Funded by Parents", description: "Living expenses covered by family", icon: "🛡️" },
 ];
-const RED = "#E10600";
-
 export default function Step2Archetype({ data, update, onNext, onBack }: Props) {
   const [selected, setSelected] = useState(data.archetypes);
 
@@ -77,24 +76,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#2a2a2a",
-    backgroundColor: "#161616",
+    borderColor: RouteColors.line,
+    backgroundColor: RouteColors.panel,
   },
-  optionActive: { borderColor: RED, backgroundColor: "rgba(225,6,0,0.08)" },
+  optionActive: { borderColor: RouteColors.cyan, backgroundColor: "rgba(113,155,145,0.1)" },
   checkbox: {
     width: 18,
     height: 18,
     borderRadius: 4,
     borderWidth: 1,
-    borderColor: "#555",
+    borderColor: RouteColors.muted,
     alignItems: "center",
     justifyContent: "center",
   },
-  checkboxActive: { borderColor: RED, backgroundColor: RED },
-  check: { color: "#fff", fontSize: 13, fontWeight: "700" },
+  checkboxActive: { borderColor: RouteColors.cyan, backgroundColor: RouteColors.cyan },
+  check: { color: RouteColors.ink, fontSize: 13, fontWeight: "700" },
   icon: { width: 34, fontSize: 24, textAlign: "center" },
   optionCopy: { flex: 1, gap: 3 },
   optionText: { color: "#aaa", fontFamily: "Barlow Condensed", fontSize: 18, fontWeight: "700" },
-  optionTextActive: { color: "#fff", fontWeight: "600" },
-  description: { color: "#555", fontFamily: "Barlow", fontSize: 14 },
+  optionTextActive: { color: RouteColors.text, fontWeight: "600" },
+  description: { color: RouteColors.muted, fontFamily: "Barlow", fontSize: 14 },
 });
