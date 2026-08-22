@@ -1,98 +1,103 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useState } from "react";
+import { View, StyleSheet, Platform } from "react-native";
+import Step1Identity from "../features/onboarding/Step1Identity";
+import Step2Archetype from "../features/onboarding/Step2Archetype";
+import Step3Income from "../features/onboarding/Step3Income";
+import Step4Targets from "../features/onboarding/Step4Targets";
+import Dashboard from "../features/onboarding/dashboard";
+import AppShell from "../components/AppShell";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+export type OnboardingData = {
+  name: string;
+  age: string;
+  archetypes: string[];
+  income: string;
+  spendingBudget: string;
+  savingsTarget: string;
+};
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+const TOTAL_STEPS = 4;
+
+export default function Index() {
+  const [step, setStep] = useState(1);
+  const [data, setData] = useState<OnboardingData>({
+    name: "",
+    age: "",
+    archetypes: [],
+    income: "",
+    spendingBudget: "",
+    savingsTarget: "",
+  });
+
+  const next = () => setStep((s) => Math.min(s + 1, TOTAL_STEPS + 1));
+  const back = () => setStep((s) => Math.max(s - 1, 1));
+  const update = (patch: Partial<OnboardingData>) =>
+    setData((d) => ({ ...d, ...patch }));
+
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+    <View style={styles.webHost}>
+      <View style={styles.phone}>
+        {/* Status bar area */}
+        <View style={styles.statusBar} />
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+        <AppShell step={step} total={TOTAL_STEPS} done={step > TOTAL_STEPS}>
+          {step === 1 && <Step1Identity data={data} update={update} onNext={next} />}
+          {step === 2 && <Step2Archetype data={data} update={update} onNext={next} onBack={back} />}
+          {step === 3 && <Step3Income data={data} update={update} onNext={next} onBack={back} />}
+          {step === 4 && <Step4Targets data={data} update={update} onComplete={next} onBack={back} />}
+          {step > TOTAL_STEPS && <Dashboard data={data} />}
+        </AppShell>
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+        {/* Home indicator */}
+        <View style={styles.homeBar}>
+          <View style={styles.homeIndicator} />
+        </View>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  webHost: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+    minHeight: "100vh" as any,
+    width: "100%" as any,
+    backgroundColor: "#050505",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 24,
+    boxSizing: "border-box" as any,
   },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+  phone: {
+    width: "100%" as any,
+    maxWidth: 390,
+    height: 844,
+    maxHeight: "calc(100vh - 48px)" as any,
+    backgroundColor: "#0b0b0b",
+    borderRadius: 44,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "rgba(225,6,0,0.15)",
+    ...Platform.select({
+      web: {
+        boxShadow: "0 40px 120px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.04), 0 0 60px rgba(225,6,0,0.06)",
+      } as any,
+    }),
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+  statusBar: {
+    height: 50,
+    backgroundColor: "#0b0b0b",
   },
-  title: {
-    textAlign: 'center',
+  homeBar: {
+    height: 34,
+    backgroundColor: "#0b0b0b",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+  homeIndicator: {
+    width: 134,
+    height: 5,
+    borderRadius: 3,
+    backgroundColor: "rgba(255,255,255,0.2)",
   },
 });
